@@ -1,13 +1,14 @@
 {% set name = "sardana" %}
-{% set version = "3.0.3" %}
+{% set version = "3.0.4.dev1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 532d330902e460622976db71c42f48e1cb5b791940dcb037ed10afbbfdade2ad
+  url: https://github.com/sardana-org/sardana/tarball/a6879704b39fc00d3b66828513c50bb49fe56fdf
+  fn: sardana-a687970.tar.gz
+  sha256: 34d8d4c54dd399b803149357fd92b9707ccd750da5e60e32365d646bbf9dd140
 
 build:
   number: 0
