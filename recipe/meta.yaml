@@ -1,5 +1,5 @@
 {% set name = "sardana" %}
-{% set version = "3.0.3" %}
+{% set version = "3.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 532d330902e460622976db71c42f48e1cb5b791940dcb037ed10afbbfdade2ad
+  sha256: 6e9c9b3d3811839c03ea198731efc18185c59a1d7ffff4a489cb8835cdf5468b
 
 build:
   number: 0
@@ -55,7 +55,7 @@ about:
   license: LGPL-3.0-or-later
   license_family: LGPL
   license_file: LICENSE
-  summary: 'Sardana is a software suite for Supervision, Control and Data Acquisition in scientific installations.'
+  summary: Sardana is a software suite for Supervision, Control and Data Acquisition in scientific installations.
   description: |
     Sardana is a software suite for Supervision,
     Control and Data Acquisition in scientific installations.
