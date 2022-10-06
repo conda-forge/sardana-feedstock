@@ -65,7 +65,7 @@ about:
     by a larger community which includes several other laboratories and individuals
     (ALBA, DESY, MaxIV, Solaris, ESRF).
   doc_url: https://sardana-controls.org
-  dev_url: https://github.com/sardana-org/sardana
+  dev_url: https://gitlab.com/sardana-org/sardana
 
 extra:
   recipe-maintainers:
