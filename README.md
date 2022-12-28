@@ -9,7 +9,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sardana-feedsto
 
 Summary: Sardana is a software suite for Supervision, Control and Data Acquisition in scientific installations.
 
-Development: https://github.com/sardana-org/sardana
+Development: https://gitlab.com/sardana-org/sardana
 
 Documentation: https://sardana-controls.org
 
