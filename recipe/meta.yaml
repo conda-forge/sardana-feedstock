@@ -13,6 +13,7 @@ build:
   number: 0
   noarch: python
   entry_points:
+    - sardana = sardana.cli:main
     - MacroServer = sardana.tango.macroserver:main
     - Pool = sardana.tango.pool:main
     - Sardana = sardana.tango:main
@@ -47,6 +48,7 @@ test:
     - MacroServer --help
     - Pool --help
     - Sardana --help
+    - sardana --help
   requires:
     - pip
 
