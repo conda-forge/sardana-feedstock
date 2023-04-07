@@ -12,45 +12,93 @@ source:
 build:
   number: 0
   noarch: python
-  entry_points:
-    - sardana = sardana.cli:main
-    - MacroServer = sardana.tango.macroserver:main
-    - Pool = sardana.tango.pool:main
-    - Sardana = sardana.tango:main
-    - sardanatestsuite = sardana.test.testsuite:main
-    - spock = sardana.spock:main
-    - diffractometeralignment = sardana.taurus.qt.qtgui.extra_hkl.diffractometeralignment:main
-    - hklscan = sardana.taurus.qt.qtgui.extra_hkl.hklscan:main
-    - macroexecutor = sardana.taurus.qt.qtgui.extra_macroexecutor.macroexecutor:main
-    - sequencer = sardana.taurus.qt.qtgui.extra_macroexecutor.sequenceeditor:main
-    - ubmatrix = sardana.taurus.qt.qtgui.extra_hkl.ubmatrix:main
-    - showscan = sardana.taurus.qt.qtgui.extra_sardana.showscanonline:main
-  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
     - python >=3.5
   run:
-    - click
-    - itango >=0.1.6
-    - lxml >=2.3
-    - pytango >=9.2.5
-    - python >=3.5
-    - taurus >=5.0.0
+    - {{ pin_subpackage('sardana-server', exact=True) }}
+    - {{ pin_subpackage('sardana-client', exact=True) }}
 
-test:
-  imports:
-    - sardana
-    - sardana.macroserver
-  commands:
-    - pip check
-    - MacroServer --help
-    - Pool --help
-    - Sardana --help
-    - sardana --help
-  requires:
-    - pip
+outputs:
+  - name: sardana-server
+    script: build_core.sh
+    build:
+      noarch: python
+      entry_points:
+        - sardana = sardana.cli:main
+        - sardanacli = sardana.cli:main
+        - MacroServer = sardana.tango.macroserver:main
+        - Pool = sardana.tango.pool:main
+        - Sardana = sardana.tango:main
+        - spock = sardana.spock:main
+        - diffractometeralignment = sardana.taurus.qt.qtgui.extra_hkl.diffractometeralignment:main
+        - hklscan = sardana.taurus.qt.qtgui.extra_hkl.hklscan:main
+        - macroexecutor = sardana.taurus.qt.qtgui.extra_macroexecutor.macroexecutor:main
+        - sequencer = sardana.taurus.qt.qtgui.extra_macroexecutor.sequenceeditor:main
+        - ubmatrix = sardana.taurus.qt.qtgui.extra_hkl.ubmatrix:main
+        - showscan = sardana.taurus.qt.qtgui.extra_sardana.showscanonline:main
+    requirements:
+      host:
+        - pip
+        - python >=3.5
+      run:
+        - click
+        # itango is needed here otherwise no subcommand can be added to "sardana"
+        # as it's part of the requirements
+        - itango >=0.1.6
+        - lxml >=2.3
+        - pytango >=9.2.5
+        - python >=3.5
+        - taurus-core >=5.0.0
+    test:
+      imports:
+        - sardana
+        - sardana.macroserver
+        - sardana.pool
+      commands:
+        - pip check
+        - MacroServer --help
+        - Pool --help
+        - Sardana --help
+        - sardana --help
+      requires:
+        - pip
+
+  - name: sardana-client
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python >=3.5
+      run:
+        - {{ pin_subpackage('sardana-server', exact=True) }}
+        - taurus-qt >=5.0.0
+    test:
+      imports:
+        - sardana.spock
+      commands:
+        - sardana spock --help
+
+  - name: sardana-config
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python >=3.5
+      run:
+        - {{ pin_subpackage('sardana-server', exact=True) }}
+        - dsconfig >=1.6.7
+        - pyyaml
+        - ruamel.yaml
+        - pydantic
+        - jsonpatch
+    test:
+      imports:
+        - sardana.config
+      commands:
+        - sardana config --help
 
 about:
   home: http://www.sardana-controls.org
