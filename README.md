@@ -41,9 +41,9 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-sardana-green.svg)](https://anaconda.org/conda-forge/sardana) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana.svg)](https://anaconda.org/conda-forge/sardana) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana.svg)](https://anaconda.org/conda-forge/sardana) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana.svg)](https://anaconda.org/conda-forge/sardana) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-sardana--client-green.svg)](https://anaconda.org/conda-forge/sardana-client) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana-client.svg)](https://anaconda.org/conda-forge/sardana-client) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana-client.svg)](https://anaconda.org/conda-forge/sardana-client) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana-client.svg)](https://anaconda.org/conda-forge/sardana-client) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-sardana--config-green.svg)](https://anaconda.org/conda-forge/sardana-config) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana-config.svg)](https://anaconda.org/conda-forge/sardana-config) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana-config.svg)](https://anaconda.org/conda-forge/sardana-config) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana-config.svg)](https://anaconda.org/conda-forge/sardana-config) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-sardana--server-green.svg)](https://anaconda.org/conda-forge/sardana-server) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana-server.svg)](https://anaconda.org/conda-forge/sardana-server) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana-server.svg)](https://anaconda.org/conda-forge/sardana-server) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana-server.svg)](https://anaconda.org/conda-forge/sardana-server) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sardana--core-green.svg)](https://anaconda.org/conda-forge/sardana-core) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana-core.svg)](https://anaconda.org/conda-forge/sardana-core) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana-core.svg)](https://anaconda.org/conda-forge/sardana-core) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana-core.svg)](https://anaconda.org/conda-forge/sardana-core) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sardana--qt-green.svg)](https://anaconda.org/conda-forge/sardana-qt) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana-qt.svg)](https://anaconda.org/conda-forge/sardana-qt) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana-qt.svg)](https://anaconda.org/conda-forge/sardana-qt) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana-qt.svg)](https://anaconda.org/conda-forge/sardana-qt) |
 
 Installing sardana
 ==================
@@ -55,16 +55,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `sardana, sardana-client, sardana-config, sardana-server` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `sardana, sardana-config, sardana-core, sardana-qt` can be installed with `conda`:
 
 ```
-conda install sardana sardana-client sardana-config sardana-server
+conda install sardana sardana-config sardana-core sardana-qt
 ```
 
 or with `mamba`:
 
 ```
-mamba install sardana sardana-client sardana-config sardana-server
+mamba install sardana sardana-config sardana-core sardana-qt
 ```
 
 It is possible to list all of the versions of `sardana` available on your platform with `conda`:
