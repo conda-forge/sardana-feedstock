@@ -18,8 +18,8 @@ requirements:
     - pip
     - python >=3.5
   run:
-    - {{ pin_subpackage('sardana-server', exact=True) }}
-    - {{ pin_subpackage('sardana-client', exact=True) }}
+    - {{ pin_subpackage('sardana-core', exact=True) }}
+    - {{ pin_subpackage('sardana-qt', exact=True) }}
 
 test:
   commands:
@@ -29,7 +29,7 @@ test:
     - pip
 
 outputs:
-  - name: sardana-server
+  - name: sardana-core
     script: build_core.sh
     build:
       noarch: python
@@ -52,6 +52,7 @@ outputs:
         - python >=3.5
       run:
         - click
+        - itango >=0.1.6
         - lxml >=2.3
         - pytango >=9.2.5
         - python >=3.5
@@ -67,16 +68,15 @@ outputs:
         - Sardana --help
         - sardana --help
 
-  - name: sardana-client
+  - name: sardana-qt
     build:
       noarch: python
     requirements:
       host:
         - python >=3.5
       run:
-        - {{ pin_subpackage('sardana-server', exact=True) }}
+        - {{ pin_subpackage('sardana-core', exact=True) }}
         - taurus-qt >=5.0.0
-        - itango >=0.1.6
     test:
       imports:
         - sardana.spock
@@ -91,10 +91,7 @@ outputs:
       host:
         - python >=3.5
       run:
-        - {{ pin_subpackage('sardana-server', exact=True) }}
-        # itango is needed here otherwise no subcommand can be added to "sardana"
-        # as it's part of the requirements
-        - itango >=0.1.6
+        - {{ pin_subpackage('sardana-core', exact=True) }}
         - dsconfig >=1.6.7
         - pyyaml
         - ruamel.yaml
