@@ -1,11 +1,11 @@
-About sardana
-=============
+About sardana-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sardana-feedstock/blob/main/LICENSE.txt)
 
 Home: http://www.sardana-controls.org
 
 Package license: LGPL-3.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sardana-feedstock/blob/main/LICENSE.txt)
 
 Summary: Sardana is a software suite for Supervision, Control and Data Acquisition in scientific installations.
 
@@ -41,6 +41,9 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-sardana-green.svg)](https://anaconda.org/conda-forge/sardana) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana.svg)](https://anaconda.org/conda-forge/sardana) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana.svg)](https://anaconda.org/conda-forge/sardana) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana.svg)](https://anaconda.org/conda-forge/sardana) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sardana--client-green.svg)](https://anaconda.org/conda-forge/sardana-client) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana-client.svg)](https://anaconda.org/conda-forge/sardana-client) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana-client.svg)](https://anaconda.org/conda-forge/sardana-client) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana-client.svg)](https://anaconda.org/conda-forge/sardana-client) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sardana--config-green.svg)](https://anaconda.org/conda-forge/sardana-config) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana-config.svg)](https://anaconda.org/conda-forge/sardana-config) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana-config.svg)](https://anaconda.org/conda-forge/sardana-config) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana-config.svg)](https://anaconda.org/conda-forge/sardana-config) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-sardana--server-green.svg)](https://anaconda.org/conda-forge/sardana-server) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/sardana-server.svg)](https://anaconda.org/conda-forge/sardana-server) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/sardana-server.svg)](https://anaconda.org/conda-forge/sardana-server) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/sardana-server.svg)](https://anaconda.org/conda-forge/sardana-server) |
 
 Installing sardana
 ==================
@@ -52,16 +55,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `sardana` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `sardana, sardana-client, sardana-config, sardana-server` can be installed with `conda`:
 
 ```
-conda install sardana
+conda install sardana sardana-client sardana-config sardana-server
 ```
 
 or with `mamba`:
 
 ```
-mamba install sardana
+mamba install sardana sardana-client sardana-config sardana-server
 ```
 
 It is possible to list all of the versions of `sardana` available on your platform with `conda`:
