@@ -21,6 +21,13 @@ requirements:
     - {{ pin_subpackage('sardana-server', exact=True) }}
     - {{ pin_subpackage('sardana-client', exact=True) }}
 
+test:
+  commands:
+    - pip check
+    - sardana --help
+  requires:
+    - pip
+
 outputs:
   - name: sardana-server
     script: build_core.sh
@@ -74,11 +81,8 @@ outputs:
       imports:
         - sardana.spock
       commands:
-        - pip check
         - sardana --help
         - sardana spock --help
-      requires:
-        - pip
 
   - name: sardana-config
     build:
