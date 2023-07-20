@@ -10,7 +10,7 @@ source:
   sha256: 88b282f8fbaf87dd6182c5654dbd35e06b0a64968c671e3d61bd7171921b88ab
 
 build:
-  number: 1
+  number: 2
   noarch: python
 
 requirements:
@@ -96,7 +96,7 @@ outputs:
         - dsconfig >=1.6.7
         - pyyaml
         - ruamel.yaml
-        - pydantic
+        - pydantic <2.0
         - jsonpatch
     test:
       imports:
