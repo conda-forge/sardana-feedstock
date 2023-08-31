@@ -1,5 +1,5 @@
 {% set name = "sardana" %}
-{% set version = "3.4.0" %}
+{% set version = "3.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 88b282f8fbaf87dd6182c5654dbd35e06b0a64968c671e3d61bd7171921b88ab
+  sha256: bc8085a5609dbefcf9cfcd9f212b8efc3a20474deecd222d2dc3a25e4b6a3634
 
 build:
-  number: 2
+  number: 0
   noarch: python
 
 requirements:
