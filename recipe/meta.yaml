@@ -43,10 +43,10 @@ outputs:
         - spock = sardana.spock:main
         - diffractometeralignment = sardana.taurus.qt.qtgui.extra_hkl.diffractometeralignment:main
         - hklscan = sardana.taurus.qt.qtgui.extra_hkl.hklscan:main
-        - macroexecutor = sardana.taurus.qt.qtgui.extra_macroexecutor.macroexecutor:main
-        - sequencer = sardana.taurus.qt.qtgui.extra_macroexecutor.sequenceeditor:main
+        - macroexecutor = sardana.taurus.qt.qtgui.extra_macroexecutor.macroexecutor:_main
+        - sequencer = sardana.taurus.qt.qtgui.extra_macroexecutor.sequenceeditor:_main
         - ubmatrix = sardana.taurus.qt.qtgui.extra_hkl.ubmatrix:main
-        - showscan = sardana.taurus.qt.qtgui.extra_sardana.showscanonline:main
+        - showscan = sardana.taurus.qt.qtgui.extra_sardana.showscanonline:_main
     requirements:
       host:
         - pip
