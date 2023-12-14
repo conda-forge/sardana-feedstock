@@ -123,6 +123,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - rhomspuron
     - beenje
     - cpascual
     - reszelaz
