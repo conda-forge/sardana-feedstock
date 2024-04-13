@@ -162,4 +162,5 @@ Feedstock Maintainers
 * [@beenje](https://github.com/beenje/)
 * [@cpascual](https://github.com/cpascual/)
 * [@reszelaz](https://github.com/reszelaz/)
+* [@rhomspuron](https://github.com/rhomspuron/)
 
