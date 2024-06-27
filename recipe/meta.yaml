@@ -16,7 +16,7 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.5,<3.12
+    - python >=3.5
   run:
     - {{ pin_subpackage('sardana-core', exact=True) }}
     - {{ pin_subpackage('sardana-qt', exact=True) }}
@@ -35,8 +35,7 @@ outputs:
     build:
       noarch: python
       entry_points:
-        - sardana = sardana.cli:main
-        - sardanacli = sardana.cli:main
+        - sardanactl = sardana.cli:main
         - MacroServer = sardana.tango.macroserver:main
         - Pool = sardana.tango.pool:main
         - Sardana = sardana.tango:main
@@ -50,14 +49,14 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.5,<3.12
+        - python >=3.5
       run:
         - click
         - itango >=0.1.6
         - lxml >=2.3
         - pytango >=9.2.5
-        - python >=3.5,<3.12
-        - taurus-core >=5.0.0
+        - python >=3.5
+        - taurus-core >=5.1.4
     test:
       imports:
         - sardana
@@ -74,10 +73,10 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python >=3.5,<3.12
+        - python >=3.5
       run:
         - {{ pin_subpackage('sardana-core', exact=True) }}
-        - taurus-qt >=5.0.0
+        - taurus-qt >=5.1.4
     test:
       imports:
         - sardana.spock
@@ -90,14 +89,14 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python >=3.5,<3.12
+        - python >=3.5
       run:
         - {{ pin_subpackage('sardana-core', exact=True) }}
-        - dsconfig >=1.6.7
-        - pyyaml
-        - ruamel.yaml
+        - dsconfig >=1.7.2
+        - ruamel.yaml >=0.18.3
         - pydantic <2.0
         - jsonpatch
+        - python-graphviz
     test:
       imports:
         - sardana.config
