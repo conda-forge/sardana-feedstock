@@ -25,7 +25,7 @@ requirements:
 test:
   commands:
     - pip check
-    - sardana --help
+    - sardanactl --help
   requires:
     - pip
 
@@ -66,7 +66,7 @@ outputs:
         - MacroServer --help
         - Pool --help
         - Sardana --help
-        - sardana --help
+        - sardanactl --help
 
   - name: sardana-qt
     build:
@@ -81,8 +81,8 @@ outputs:
       imports:
         - sardana.spock
       commands:
-        - sardana --help
-        - sardana spock --help
+        - sardanactl --help
+        - sardanactl spock --help
 
   - name: sardana-config
     build:
@@ -101,7 +101,7 @@ outputs:
       imports:
         - sardana.config
       commands:
-        - sardana config --help
+        - sardanactl config --help
 
 about:
   home: http://www.sardana-controls.org
