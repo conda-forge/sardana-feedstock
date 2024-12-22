@@ -6,17 +6,17 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: b4bc59953cb4ab01c9635ec89961e45feccc3006b0e01b584d1374e763e2c29a
 
 build:
-  number: 0
+  number: 1
   noarch: python
 
 requirements:
   host:
     - pip
-    - python >=3.5
+    - python {{ python_min }}
   run:
     - {{ pin_subpackage('sardana-core', exact=True) }}
     - {{ pin_subpackage('sardana-qt', exact=True) }}
@@ -28,6 +28,7 @@ test:
     - sardanactl --help
   requires:
     - pip
+    - python {{ python_min }}
 
 outputs:
   - name: sardana-core
@@ -49,15 +50,17 @@ outputs:
     requirements:
       host:
         - pip
-        - python >=3.5
+        - python {{ python_min }}
       run:
         - click
         - itango >=0.1.6
         - lxml >=2.3
         - pytango >=9.2.5
-        - python >=3.5
+        - python >={{ python_min }}
         - taurus-core >=5.1.4
     test:
+      requires:
+        - python {{ python_min }}
       imports:
         - sardana
         - sardana.macroserver
@@ -73,11 +76,13 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python >=3.5
+        - python {{ python_min }}
       run:
         - {{ pin_subpackage('sardana-core', exact=True) }}
         - taurus-qt >=5.1.4
     test:
+      requires:
+        - python {{ python_min }}
       imports:
         - sardana.spock
       commands:
@@ -89,7 +94,7 @@ outputs:
       noarch: python
     requirements:
       host:
-        - python >=3.5
+        - python {{ python_min }}
       run:
         - {{ pin_subpackage('sardana-core', exact=True) }}
         - dsconfig >=1.7.2
@@ -98,6 +103,8 @@ outputs:
         - jsonpatch
         - python-graphviz
     test:
+      requires:
+        - python {{ python_min }}
       imports:
         - sardana.config
       commands:
