@@ -80,6 +80,7 @@ outputs:
       host:
         - python {{ python_min }}
       run:
+        - python >={{ python_min }}
         - {{ pin_subpackage('sardana-core', exact=True) }}
         - taurus-qt >=5.1.4
     test:
@@ -98,6 +99,7 @@ outputs:
       host:
         - python {{ python_min }}
       run:
+        - python >={{ python_min }}
         - {{ pin_subpackage('sardana-core', exact=True) }}
         - dsconfig >=1.7.2
         - ruamel.yaml >=0.18.3
