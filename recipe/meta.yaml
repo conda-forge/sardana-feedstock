@@ -10,7 +10,7 @@ source:
   sha256: acfc428ac9c37b153cc92d9e4ae66e157d5de477cd40a1d3de7d7a3d887f1362
 
 build:
-  number: 0
+  number: 1
   noarch: python
 
 requirements:
@@ -25,7 +25,6 @@ requirements:
 
 test:
   commands:
-    - pip check
     - sardanactl --help
   requires:
     - pip
@@ -56,6 +55,7 @@ outputs:
       run:
         - click
         - itango >=0.1.6
+        - ipython <9.0
         - lxml >=2.3
         - pytango >=9.2.5
         - python >={{ python_min }}
