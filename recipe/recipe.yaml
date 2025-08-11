@@ -1,0 +1,166 @@
+schema_version: 1
+
+context:
+  name: sardana
+  version: 3.5.2
+
+recipe:
+  name: sardana-split
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: acfc428ac9c37b153cc92d9e4ae66e157d5de477cd40a1d3de7d7a3d887f1362
+
+build:
+  number: 2
+  noarch: python
+
+outputs:
+  - package:
+      name: sardana-core
+    build:
+      noarch: python
+      script: ${{ PYTHON }} -m pip install --no-deps -vv .
+      python:
+        entry_points:
+          - sardanactl = sardana.cli:main
+          - MacroServer = sardana.tango.macroserver:main
+          - Pool = sardana.tango.pool:main
+          - Sardana = sardana.tango:main
+          - spock = sardana.spock:main
+          - diffractometeralignment = sardana.taurus.qt.qtgui.extra_hkl.diffractometeralignment:main
+          - hklscan = sardana.taurus.qt.qtgui.extra_hkl.hklscan:main
+          - macroexecutor = sardana.taurus.qt.qtgui.extra_macroexecutor.macroexecutor:_main
+          - sequencer = sardana.taurus.qt.qtgui.extra_macroexecutor.sequenceeditor:_main
+          - ubmatrix = sardana.taurus.qt.qtgui.extra_hkl.ubmatrix:main
+          - showscan = sardana.taurus.qt.qtgui.extra_sardana.showscanonline:_main
+    requirements:
+      host:
+        - pip
+        - python ${{ python_min }}.*
+        - setuptools
+      run:
+        - click
+        - itango >=0.1.6
+        - ipython <9.0
+        - lxml >=2.3
+        - pytango >=9.2.5
+        - python >=${{ python_min }}
+        - taurus-core >=5.1.4
+    tests:
+      - python:
+          imports:
+            - sardana
+            - sardana.macroserver
+            - sardana.pool
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.*
+      - script:
+          - MacroServer --help
+          - Pool --help
+          - Sardana --help
+          - sardanactl --help
+        requirements:
+          run:
+            - python ${{ python_min }}.*
+
+  - package:
+      name: sardana-qt
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - python >=${{ python_min }}
+        - ${{ pin_subpackage('sardana-core', exact=True) }}
+        - taurus-qt >=5.1.4
+    tests:
+      - python:
+          imports:
+            - sardana.spock
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.*
+      - script:
+          - sardanactl --help
+          - sardanactl spock --help
+        requirements:
+          run:
+            - python ${{ python_min }}.*
+
+  - package:
+      name: sardana-config
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - python >=${{ python_min }}
+        - ${{ pin_subpackage('sardana-core', exact=True) }}
+        - dsconfig >=1.7.2
+        - ruamel.yaml >=0.18.3
+        - pydantic <2.0
+        - jsonpatch
+        - python-graphviz
+    tests:
+      - python:
+          imports:
+            - sardana.config
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.*
+      - script:
+          - sardanactl config --help
+        requirements:
+          run:
+            - python ${{ python_min }}.*
+
+  - package:
+      name: sardana
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - ${{ pin_subpackage('sardana-core', exact=True) }}
+        - ${{ pin_subpackage('sardana-qt', exact=True) }}
+        - ${{ pin_subpackage('sardana-config', exact=True) }}
+    tests:
+      - python:
+          imports:
+            - sardana
+            - sardana.config
+          pip_check: true
+          python_version:
+            - ${{ python_min }}.*
+            - 3.*
+      - script:
+          - sardanactl --help
+        requirements:
+          run:
+            - python ${{ python_min }}.*
+
+about:
+  license: LGPL-3.0-or-later
+  license_file: LICENSE
+  summary: Sardana is a software suite for Supervision, Control and Data Acquisition in scientific installations.
+  description: |
+    Sardana is a software suite for Supervision,
+    Control and Data Acquisition in scientific installations.
+    It aims to reduce cost and time of design, development and support of
+    the control and data acquisition systems.
+    Sardana development was started at the ALBA synchrotron and today is supported
+    by a larger community which includes several other laboratories and individuals
+    (ALBA, DESY, MaxIV, Solaris, ESRF).
+  homepage: http://www.sardana-controls.org
+  repository: https://gitlab.com/sardana-org/sardana
+  documentation: https://sardana-controls.org
+
+extra:
+  recipe-maintainers:
+    - rhomspuron
+    - beenje
+    - cpascual
+    - reszelaz
