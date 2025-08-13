@@ -3,7 +3,7 @@ About sardana-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/sardana-feedstock/blob/main/LICENSE.txt)
 
-Home: http://www.sardana-controls.org
+Home: http://www.sardana-controls.org/
 
 Package license: LGPL-3.0-or-later
 
@@ -11,7 +11,7 @@ Summary: Sardana is a software suite for Supervision, Control and Data Acquisiti
 
 Development: https://gitlab.com/sardana-org/sardana
 
-Documentation: https://sardana-controls.org
+Documentation: https://sardana-controls.org/
 
 Sardana is a software suite for Supervision,
 Control and Data Acquisition in scientific installations.
@@ -20,7 +20,6 @@ the control and data acquisition systems.
 Sardana development was started at the ALBA synchrotron and today is supported
 by a larger community which includes several other laboratories and individuals
 (ALBA, DESY, MaxIV, Solaris, ESRF).
-
 
 Current build status
 ====================
