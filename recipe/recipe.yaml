@@ -99,7 +99,7 @@ outputs:
       run:
         - ${{ pin_subpackage('sardana-core', exact=True) }}
         - ${{ pin_subpackage('sardana-qt', exact=True) }}
-        - sardana-config
+        - sardana-config >=3.6.0
     tests:
       - python:
           imports:
