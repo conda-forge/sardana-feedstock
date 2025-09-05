@@ -43,7 +43,7 @@ outputs:
       run:
         - click
         - itango >=0.1.6
-        - ipython <9.0
+        - ipython >=5.1
         - lxml >=2.3
         - pytango >=9.2.5
         - python >=${{ python_min }}
@@ -92,33 +92,6 @@ outputs:
             - python ${{ python_min }}.*
 
   - package:
-      name: sardana-config
-    build:
-      noarch: generic
-    requirements:
-      run:
-        - python >=${{ python_min }}
-        - ${{ pin_subpackage('sardana-core', exact=True) }}
-        - dsconfig >=1.7.2
-        - ruamel.yaml >=0.18.3
-        - pydantic <2.0
-        - jsonpatch
-        - python-graphviz
-    tests:
-      - python:
-          imports:
-            - sardana.config
-          pip_check: true
-          python_version:
-            - ${{ python_min }}.*
-            - 3.*
-      - script:
-          - sardanactl config --help
-        requirements:
-          run:
-            - python ${{ python_min }}.*
-
-  - package:
       name: sardana
     build:
       noarch: generic
@@ -126,12 +99,11 @@ outputs:
       run:
         - ${{ pin_subpackage('sardana-core', exact=True) }}
         - ${{ pin_subpackage('sardana-qt', exact=True) }}
-        - ${{ pin_subpackage('sardana-config', exact=True) }}
+        - sardana-config
     tests:
       - python:
           imports:
             - sardana
-            - sardana.config
           pip_check: true
           python_version:
             - ${{ python_min }}.*
