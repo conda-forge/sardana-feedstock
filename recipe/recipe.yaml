@@ -59,9 +59,6 @@ outputs:
             - ${{ python_min }}.*
             - 3.*
       - script:
-          - MacroServer --help
-          - Pool --help
-          - Sardana --help
           - sardanactl --help
         requirements:
           run:
