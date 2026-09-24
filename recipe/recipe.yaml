@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: sardana
-  version: "3.7.0"
+  version: "3.7.1"
 
 recipe:
   name: sardana-split
@@ -10,7 +10,7 @@ recipe:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: e5d8b47535d232f5c73e7537a95dd68a7184f8f6d2ae7700fff06d2698eb8a69
+  sha256: 2816124259a7a6dc80ec702f8d93fff7f83dc71b03796e0ca1cef95ae6be512c
 
 build:
   number: 0
